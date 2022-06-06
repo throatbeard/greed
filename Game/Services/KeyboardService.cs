@@ -44,7 +44,7 @@ namespace greed.Game.Services
                 dx = 1;
             }
 
-            Point direction = new Point(dx);
+            Point direction = new Point(dx,0);
             direction = direction.Scale(cellSize);
 
             return direction;
