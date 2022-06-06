@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Unit04.Game.Casting;
-using Unit04.Game.Directing;
-using Unit04.Game.Services;
+using greed.Game.Casting;
+using greed.Game.Directing;
+using greed.Game.Services;
 
 
-namespace Unit04
+namespace greed
 {
     /// <summary>
     /// The program's entry point.

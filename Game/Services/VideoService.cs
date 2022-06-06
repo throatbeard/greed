@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using Raylib_cs;
-using Unit04.Game.Casting;
+using greed.Game.Casting;
 
 
-namespace Unit04.Game.Services
+namespace greed.Game.Services
 {
     /// <summary>
     /// <para>Outputs the game state.</para>
