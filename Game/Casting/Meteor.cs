@@ -1,18 +1,18 @@
 namespace greed.Game.Casting
 {
         /// <summary>
-        /// <para>An item of cultural or historical interest.</para>
+        /// <para>An item that falls from the top of the screen.</para>
         /// <para>
-        /// The responsibility of an Artifact is to provide a message about itself.
+        /// The responsibility of an Artifact is to add or subtract score when the player collides with it.
         /// </para>
         /// </summary>
-    public class Artifact : Actor
+    public class Meteor : Actor
     {
         /// <summary>
-        /// Constructs a new instance of Artifact.
+        /// Constructs a new instance of Meteor.
         /// </summary>
         string message;
-        public Artifact()
+        public Meteor()
         {
         }
        

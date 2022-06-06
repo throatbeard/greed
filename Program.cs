@@ -21,7 +21,7 @@ namespace greed
         private static int FONT_SIZE = 15;
         private static int COLS = 60;
         private static int ROWS = 40;
-        private static string CAPTION = "Robot Finds Kitten";
+        private static string CAPTION = "Greed";
         private static string DATA_PATH = "Data/messages.txt";
         private static Color WHITE = new Color(255, 255, 255);
         private static int DEFAULT_ARTIFACTS = 40;
@@ -45,12 +45,12 @@ namespace greed
             cast.AddActor("banner", banner);
 
             // create the robot
-            Actor robot = new Actor();
-            robot.SetText("#");
-            robot.SetFontSize(FONT_SIZE);
-            robot.SetColor(WHITE);
-            robot.SetPosition(new Point(MAX_X / 2, MAX_Y / 2));
-            cast.AddActor("robot", robot);
+            Actor player = new Actor();
+            player.SetText("#");
+            player.SetFontSize(FONT_SIZE);
+            player.SetColor(WHITE);
+            player.SetPosition(new Point(MAX_X / 2, MAX_Y / 2));
+            cast.AddActor("player", player);
 
             // load the messages
             List<string> messages = File.ReadAllLines(DATA_PATH).ToList<string>();
@@ -72,13 +72,13 @@ namespace greed
                 int b = random.Next(0, 256);
                 Color color = new Color(r, g, b);
 
-                Artifact artifact = new Artifact();
-                artifact.SetText(text);
-                artifact.SetFontSize(FONT_SIZE);
-                artifact.SetColor(color);
-                artifact.SetPosition(position);
-                artifact.SetMessage(message);
-                cast.AddActor("artifacts", artifact);
+                Meteor meteor = new Meteor();
+                meteor.SetText(text);
+                meteor.SetFontSize(FONT_SIZE);
+                meteor.SetColor(color);
+                meteor.SetPosition(position);
+                meteor.SetMessage(message);
+                cast.AddActor("meteors", meteor);
             }
 
             // start the game

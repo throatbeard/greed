@@ -62,33 +62,22 @@ namespace greed.Game.Directing
         {
             Actor banner = cast.GetFirstActor("banner");
             Actor player = cast.GetFirstActor("robot");
-            List<Actor> gems = cast.GetActors("gems");
-            List<Actor> rocks = cast.GetActors("rocks");
+            List<Actor> meteors = cast.GetActors("meteors");
 
             banner.SetText("");
             int maxX = videoService.GetWidth();
             int maxY = videoService.GetHeight();
             player.MoveNext(maxX, maxY);
 
-            foreach (Actor actor in gems)
+            foreach (Actor actor in meteors)
             {
                 if (player.GetPosition().Equals(actor.GetPosition()))
                 {
-                    Gem gem = (Gem) actor;
-                    string message = gem.GetMessage();
+                    Meteor meteor = (Meteor) actor;
+                    string message = meteor.GetMessage();
                     banner.SetText(message);
                 }
             }
-
-            foreach (Actor actor in rocks)
-            {
-                if (player.GetPosition().Equals(actor.GetPosition()))
-                {
-                    Rock rock = (Rock) actor;
-                    string message = gem.GetMessage();
-                    banner.SetText(message);
-                }
-            } 
         }
 
         /// <summary>
