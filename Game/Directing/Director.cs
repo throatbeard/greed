@@ -69,7 +69,7 @@ namespace greed.Game.Directing
             int maxY = videoService.GetHeight();
             player.MoveNext(maxX, maxY);
 
-            foreach (Actor actor in mineral)
+            foreach (Actor actor in minerals)
             {
                 if (player.GetPosition().Equals(actor.GetPosition()))
                 {
