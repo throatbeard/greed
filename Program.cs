@@ -73,7 +73,6 @@ namespace greed
                 mineral.SetFontSize(FONT_SIZE);
                 mineral.SetColor(color);
                 mineral.SetPosition(position);
-                mineral.SetMessage(message);
                 cast.AddActor("minerals", mineral);
             }
 
