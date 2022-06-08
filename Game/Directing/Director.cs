@@ -61,10 +61,11 @@ namespace greed.Game.Directing
         private void DoUpdates(Cast cast)
         {
             Actor banner = cast.GetFirstActor("banner");
+            int score = banner.GetScore();
             Actor player = cast.GetFirstActor("robot");
             List<Actor> minerals = cast.GetActors("minerals");
 
-            banner.SetText("");
+            banner.SetText($"{score}");
             int maxX = videoService.GetWidth();
             int maxY = videoService.GetHeight();
             player.MoveNext(maxX, maxY);
@@ -75,7 +76,10 @@ namespace greed.Game.Directing
                 {
                     Mineral mineral = (Mineral) actor;
                     string message = mineral.GetMessage();
-                    banner.SetText(message);
+                    int minScore = mineral.GetScore();
+                    score = score + minScore;
+                    banner.SetScore(score);
+                    banner.SetText($"{score}");
                 }
             }
         }
