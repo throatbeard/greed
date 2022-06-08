@@ -69,6 +69,33 @@ namespace greed.Game.Directing
             int maxY = videoService.GetHeight();
             player.MoveNext(maxX, maxY);
 
+            // create the minerals
+            Random random = new Random();
+            for (int i = 0; i < eternally; i++)                         //eternally is just to show this loop just keeps going without end
+            {
+                string text = ((char)random.Next(33, 126)).ToString();  //rng
+                string message = messages[i];                           //why 
+
+                int x = random.Next(1, COLS);                           //keep this because minerals should spawn in random columns
+                int y = 40;                                             //always spawns in the first row at the top
+                Point position = new Point(x, y);
+                position = position.Scale(CELL_SIZE);                   //cell size???
+
+                int r = random.Next(0, 256);                            //probably don't need any of this
+                int g = random.Next(0, 256);
+                int b = random.Next(0, 256);
+                Color color = new Color(r, g, b);
+
+                Mineral mineral = new Mineral();                        //
+                mineral.SetText(text);                                  //text? for minerals?
+                mineral.SetFontSize(FONT_SIZE);                         //font size?? why
+                mineral.SetColor(color);                                //color of falling minerals
+                mineral.SetPosition(position);                          //starting positions of minerals
+                mineral.SetMessage(message);                            //
+                cast.AddActor("minerals", mineral);                     //
+            }
+
+
             foreach (Actor actor in minerals)
             {
                 if (player.GetPosition().Equals(actor.GetPosition()))
