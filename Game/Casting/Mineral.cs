@@ -6,13 +6,13 @@ namespace greed.Game.Casting
         /// The responsibility of an Artifact is to add or subtract score when the player collides with it.
         /// </para>
         /// </summary>
-    public class Meteor : Actor
+    public class Mineral : Actor
     {
         /// <summary>
         /// Constructs a new instance of Meteor.
         /// </summary>
         string message;
-        public Meteor()
+        public Mineral()
         {
         }
        

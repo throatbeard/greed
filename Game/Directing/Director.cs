@@ -62,7 +62,7 @@ namespace greed.Game.Directing
         {
             Actor banner = cast.GetFirstActor("banner");
             Actor player = cast.GetFirstActor("robot");
-            List<Actor> meteors = cast.GetActors("meteors");
+            List<Actor> minerals = cast.GetActors("minerals");
 
             banner.SetText("");
             int maxX = videoService.GetWidth();
@@ -73,8 +73,8 @@ namespace greed.Game.Directing
             {
                 if (player.GetPosition().Equals(actor.GetPosition()))
                 {
-                    Meteor meteor = (Meteor) actor;
-                    string message = meteor.GetMessage();
+                    Mineral mineral = (Mineral) actor;
+                    string message = mineral.GetMessage();
                     banner.SetText(message);
                 }
             }

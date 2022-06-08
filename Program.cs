@@ -24,7 +24,7 @@ namespace greed
         private static string CAPTION = "Greed";
         private static string DATA_PATH = "Data/messages.txt";
         private static Color WHITE = new Color(255, 255, 255);
-        private static int DEFAULT_ARTIFACTS = 40;
+        private static int DEFAULT_MINERALS = 40;
 
 
         /// <summary>
@@ -49,13 +49,13 @@ namespace greed
             player.SetText("#");
             player.SetFontSize(FONT_SIZE);
             player.SetColor(WHITE);
-            player.SetPosition(new Point(MAX_X / 2, MAX_Y / 2));
+            player.SetPosition(new Point(MAX_X / 2, 15));
             cast.AddActor("player", player);
 
             // load the messages
             List<string> messages = File.ReadAllLines(DATA_PATH).ToList<string>();
 
-            // create the artifacts
+            // create the minerals
             Random random = new Random();
             for (int i = 0; i < DEFAULT_ARTIFACTS; i++)
             {
@@ -72,13 +72,13 @@ namespace greed
                 int b = random.Next(0, 256);
                 Color color = new Color(r, g, b);
 
-                Meteor meteor = new Meteor();
-                meteor.SetText(text);
-                meteor.SetFontSize(FONT_SIZE);
-                meteor.SetColor(color);
-                meteor.SetPosition(position);
-                meteor.SetMessage(message);
-                cast.AddActor("meteors", meteor);
+                Mineral mineral = new Mineral();
+                mineral.SetText(text);
+                mineral.SetFontSize(FONT_SIZE);
+                mineral.SetColor(color);
+                mineral.SetPosition(position);
+                mineral.SetMessage(message);
+                cast.AddActor("minerals", mineral);
             }
 
             // start the game
