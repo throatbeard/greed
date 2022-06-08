@@ -57,7 +57,7 @@ namespace greed
 
             // create the minerals
             Random random = new Random();
-            for (int i = 0; i < DEFAULT_ARTIFACTS; i++)
+            for (int i = 0; i < DEFAULT_MINERALS; i++)
             {
                 string text = ((char)random.Next(33, 126)).ToString();
                 string message = messages[i];
