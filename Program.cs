@@ -22,7 +22,6 @@ namespace greed
         private static int COLS = 60;
         private static int ROWS = 40;
         private static string CAPTION = "Greed";
-        private static string DATA_PATH = "Data/messages.txt";
         private static Color WHITE = new Color(255, 255, 255);
         private static int DEFAULT_MINERALS = 40;
 
@@ -38,6 +37,7 @@ namespace greed
 
             // create the banner
             Actor banner = new Actor();
+            banner.SetScore(0);
             banner.SetText("");
             banner.SetFontSize(FONT_SIZE);
             banner.SetColor(WHITE);
@@ -52,15 +52,11 @@ namespace greed
             player.SetPosition(new Point(MAX_X / 2, 15));
             cast.AddActor("player", player);
 
-            // load the messages
-            List<string> messages = File.ReadAllLines(DATA_PATH).ToList<string>();
-
             // create the minerals
             Random random = new Random();
             for (int i = 0; i < DEFAULT_MINERALS; i++)
             {
                 string text = ((char)random.Next(33, 126)).ToString();
-                string message = messages[i];
 
                 int x = random.Next(1, COLS);
                 int y = random.Next(40);
@@ -77,7 +73,6 @@ namespace greed
                 mineral.SetFontSize(FONT_SIZE);
                 mineral.SetColor(color);
                 mineral.SetPosition(position);
-                mineral.SetMessage(message);
                 cast.AddActor("minerals", mineral);
             }
 

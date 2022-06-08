@@ -13,6 +13,7 @@ namespace greed.Game.Casting
     public class Actor
     {
         private string text = "";
+        private int score = 0;
         private int fontSize = 15;
         private Color color = new Color(255, 255, 255); // white
         private Point position = new Point(0, 0);
@@ -142,6 +143,19 @@ namespace greed.Game.Casting
             this.text = text;
         }
 
+        /// <summary>
+        /// Sets the actor's score to the given value.
+        /// </summary>
+        /// <param name="score"> the given score.</param>
+        public void SetScore(int score)
+        {
+            this.score = score;
+        }
+
+        public int GetScore()
+        {
+            return score;
+        }
         /// <summary>
         /// Sets the actor's velocity to the given value.
         /// </summary>
