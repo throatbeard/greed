@@ -80,6 +80,29 @@ namespace greed.Game.Directing
             }
         }
 
+        private Actor Spawn() {
+            string text = ((char)random.Next(33, 126)).ToString();
+            string message = messages[i];
+
+            int x = random.Next(1, COLS);
+            int y = random.Next(40);
+            Point position = new Point(x, y);
+            position = position.Scale(CELL_SIZE);
+
+            int r = random.Next(0, 256);
+            int g = random.Next(0, 256);
+            int b = random.Next(0, 256);
+            Color color = new Color(r, g, b);
+
+            Mineral mineral = new Mineral();
+            mineral.SetText(text);
+            mineral.SetFontSize(FONT_SIZE);
+            mineral.SetColor(color);
+            mineral.SetPosition(position);
+            //mineral.SetMessage(message);
+            cast.AddActor("minerals", mineral);
+        }
+
         /// <summary>
         /// Draws the actors on the screen.
         /// </summary>

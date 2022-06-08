@@ -63,7 +63,7 @@ namespace greed
                 string message = messages[i];
 
                 int x = random.Next(1, COLS);
-                int y = random.Next(1, ROWS);
+                int y = random.Next(40);
                 Point position = new Point(x, y);
                 position = position.Scale(CELL_SIZE);
 
