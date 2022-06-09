@@ -13,7 +13,7 @@ namespace greed.Game.Directing
     /// </summary>
     public class Director
     {
-        private int score = 0;
+        private int points = 0;
         private KeyboardService keyboardService = null;
         private VideoService videoService = null;
 
@@ -65,7 +65,7 @@ namespace greed.Game.Directing
             Actor player = cast.GetFirstActor("player");
             List<Actor> minerals = cast.GetActors("minerals");
 
-            banner.SetText($"{score}");
+            banner.SetText($"{points}");
             int maxX = videoService.GetWidth();
             int maxY = videoService.GetHeight();
             player.MoveNext(maxX, maxY);
@@ -76,14 +76,15 @@ namespace greed.Game.Directing
                 {
                     Mineral mineral = (Mineral) actor;
                     int minScore = mineral.GetScore();
-                    this.score += minScore;
-                    banner.SetText($"{this.score}");
+                    this.points += minScore;
+                    banner.SetText($"{this.points}");
                 }
+                actor.MoveNext(maxX, maxY);
             }
-
             Random random = new Random();
-            for (int i = 0; i < random.Next(0,5); i++)
+            for (int i = 0; i < random.Next(1,5); i++)
             {Spawn(cast);}
+
             
         }
 
@@ -93,7 +94,7 @@ namespace greed.Game.Directing
             Random random = new Random();
             
             int x = random.Next(1, COLS);
-            int y = 40;
+            int y = 0;
             Point position = new Point(x, y);
             position = position.Scale(CELL_SIZE);
 
@@ -105,18 +106,22 @@ namespace greed.Game.Directing
             Mineral mineral = new Mineral();
             mineral.SetColor(color);
             mineral.SetPosition(position);
+            Point speed = new Point(0,10);
+            mineral.SetVelocity(speed);
             //mineral.SetMessage(message);
             cast.AddActor("minerals", mineral);
 
-            int score = random.Next(0,1);
-            if (score == 0)
-            {score = -100;
+            int points = random.Next(0,2);
+            if (points == 0)
+            {
+            points = -100;
             mineral.SetText("o");}
             else
-            {score = 100;
+            {
+            points = 100;
             mineral.SetText("*");}
 
-            mineral.SetScore(score);
+            mineral.SetScore(points);
 
         }
 
