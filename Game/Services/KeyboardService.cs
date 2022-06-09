@@ -32,7 +32,6 @@ namespace greed.Game.Services
         public Point GetDirection()
         {
             int dx = 0;
-            int dy = 0;
 
             if (Raylib.IsKeyDown(KeyboardKey.KEY_LEFT))
             {

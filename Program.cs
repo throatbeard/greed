@@ -36,7 +36,7 @@ namespace greed
             Cast cast = new Cast();
 
             // create the banner
-            Actor banner = new Actor();
+            Mineral banner = new Mineral();
             banner.SetScore(0);
             banner.SetText("");
             banner.SetFontSize(FONT_SIZE);

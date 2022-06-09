@@ -11,33 +11,26 @@ namespace greed.Game.Casting
         /// <summary>
         /// Constructs a new instance of Meteor.
         /// </summary>
-        string message;
+        private int score = 0;
         public Mineral()
         {
         }
        
 
-        
         /// <summary>
-        /// Gets the artifact's message.
+        /// Sets the actor's score to the given value.
         /// </summary>
-        /// <returns>The message as a string.</returns>
-        public string GetMessage()
-        {
-            return message;
-        }
-        
+        /// <param name="score"> the given score.</param>
 
-        
-        /// <summary>
-        /// Sets the artifact's message to the given value.
-        /// </summary>
-        /// <param name="message">The given message.</param>
-        public string SetMessage(string message)
+        public void SetScore(int score)
         {
-            this.message = message;
-            return message;
+            this.score = score;
         }
-    
+
+        public int GetScore()
+        {
+         return score;
+        }
+
     }
 }

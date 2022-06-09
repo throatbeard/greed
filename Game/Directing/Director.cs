@@ -13,6 +13,7 @@ namespace greed.Game.Directing
     /// </summary>
     public class Director
     {
+        private int score = 0;
         private KeyboardService keyboardService = null;
         private VideoService videoService = null;
 
@@ -61,8 +62,7 @@ namespace greed.Game.Directing
         private void DoUpdates(Cast cast)
         {
             Actor banner = cast.GetFirstActor("banner");
-            int score = banner.GetScore();
-            Actor player = cast.GetFirstActor("robot");
+            Actor player = cast.GetFirstActor("player");
             List<Actor> minerals = cast.GetActors("minerals");
 
             banner.SetText($"{score}");
@@ -75,11 +75,9 @@ namespace greed.Game.Directing
                 if (player.GetPosition().Equals(actor.GetPosition()))
                 {
                     Mineral mineral = (Mineral) actor;
-                    string message = mineral.GetMessage();
                     int minScore = mineral.GetScore();
-                    score = score + minScore;
-                    banner.SetScore(score);
-                    banner.SetText($"{score}");
+                    this.score += minScore;
+                    banner.SetText($"{this.score}");
                 }
             }
 
