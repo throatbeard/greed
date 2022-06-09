@@ -54,12 +54,13 @@ namespace greed
 
             // create the minerals
             Random random = new Random();
-            for (int i = 0; i < DEFAULT_MINERALS; i++)
+            for (int i = 0; i < random.Next(3,5); i++)
             {
-                string text = ((char)random.Next(33, 126)).ToString();
-
+                int COLS = 60;
+                int CELL_SIZE = 15;
+            
                 int x = random.Next(1, COLS);
-                int y = random.Next(40);
+                int y = 40;
                 Point position = new Point(x, y);
                 position = position.Scale(CELL_SIZE);
 
@@ -69,11 +70,20 @@ namespace greed
                 Color color = new Color(r, g, b);
 
                 Mineral mineral = new Mineral();
-                mineral.SetText(text);
-                mineral.SetFontSize(FONT_SIZE);
                 mineral.SetColor(color);
                 mineral.SetPosition(position);
+                //mineral.SetMessage(message);
                 cast.AddActor("minerals", mineral);
+
+                int score = random.Next(0,1);
+                if (score == 0)
+                {score = -100;
+                mineral.SetText("o");}
+                else
+                {score = 100;
+                mineral.SetText("*");}
+
+                mineral.SetScore(score);
             }
 
             // start the game
