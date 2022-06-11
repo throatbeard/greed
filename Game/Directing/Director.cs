@@ -78,6 +78,7 @@ namespace greed.Game.Directing
                     int minScore = mineral.GetScore();
                     this.points += minScore;
                     banner.SetText($"{this.points}");
+                    cast.RemoveActor("minerals", mineral);
                 }
                 actor.MoveNext(maxX, maxY);
             }
