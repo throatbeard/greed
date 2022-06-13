@@ -151,7 +151,7 @@ namespace greed.Game.Casting
         {
             if (velocity == null)
             {
-                throw new ArgumentException("velocity can't be null");
+            throw new ArgumentException("velocity can't be null");
             }
             this.velocity = velocity;
         }

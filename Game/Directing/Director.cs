@@ -13,6 +13,7 @@ namespace greed.Game.Directing
     /// </summary>
     public class Director
     {
+        private int points = 0;
         private KeyboardService keyboardService = null;
         private VideoService videoService = null;
 
@@ -61,10 +62,10 @@ namespace greed.Game.Directing
         private void DoUpdates(Cast cast)
         {
             Actor banner = cast.GetFirstActor("banner");
-            Actor player = cast.GetFirstActor("robot");
+            Actor player = cast.GetFirstActor("player");
             List<Actor> minerals = cast.GetActors("minerals");
 
-            banner.SetText("");
+            banner.SetText($"{points}");
             int maxX = videoService.GetWidth();
             int maxY = videoService.GetHeight();
             player.MoveNext(maxX, maxY);
@@ -101,11 +102,57 @@ namespace greed.Game.Directing
                 if (player.GetPosition().Equals(actor.GetPosition()))
                 {
                     Mineral mineral = (Mineral) actor;
-                    string message = mineral.GetMessage();
-                    banner.SetText(message);
+                    int minScore = mineral.GetScore();
+                    this.points += minScore;
+                    banner.SetText($"{this.points}");
+                    cast.RemoveActor("minerals", mineral);
                 }
+                actor.MoveNext(maxX, maxY);
             }
+            Random random = new Random();
+            for (int i = 0; i < random.Next(1,5); i++)
+            {Spawn(cast);}
+
+            
         }
+
+        private void Spawn(Cast cast) {
+            int COLS = 60;
+            int CELL_SIZE = 15;
+            Random random = new Random();
+            
+            int x = random.Next(1, COLS);
+            int y = 0;
+            Point position = new Point(x, y);
+            position = position.Scale(CELL_SIZE);
+
+            int r = random.Next(0, 256);
+            int g = random.Next(0, 256);
+            int b = random.Next(0, 256);
+            Color color = new Color(r, g, b);
+
+            Mineral mineral = new Mineral();
+            mineral.SetColor(color);
+            mineral.SetPosition(position);
+            Point speed = new Point(0,10);
+            mineral.SetVelocity(speed);
+            //mineral.SetMessage(message);
+            cast.AddActor("minerals", mineral);
+
+            int points = random.Next(0,2);
+            if (points == 0)
+            {
+            points = -100;
+            mineral.SetText("o");}
+            else
+            {
+            points = 100;
+            mineral.SetText("*");}
+
+            mineral.SetScore(points);
+
+        }
+
 
         /// <summary>
         /// Draws the actors on the screen.
